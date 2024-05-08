@@ -34,13 +34,8 @@ class Like < ApplicationRecord
     return the_user
   end
 
-  def photo
-    my_photo_id = self.photo_id
+  belongs_to(:fan, class_name: "User", foreign_key: "fan_id")
 
-    matching_photos = Photo.where({ :id => my_photo_id })
+  belongs_to(:photo, class_name: "Photo", foreign_key: "photo_id")
 
-    the_photo = matching_photos.at(0)
-
-    return the_photo
-  end
 end
